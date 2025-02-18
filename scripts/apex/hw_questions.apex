@@ -7,7 +7,9 @@
 
 // Question 1 = helloWorld()
 Integer x = 6;
-Integer y = 3;
+Integer y = 8;
 String str = FlowControlLoopsCollections.helloWorld(x, y);
 System.debug('****** String: ' + str);
 
+String s = FlowControlLoopsCollections.checkNumber(x);
+System.debug(s);

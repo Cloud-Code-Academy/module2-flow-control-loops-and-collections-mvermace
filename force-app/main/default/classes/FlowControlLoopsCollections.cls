@@ -28,12 +28,24 @@ public with sharing class FlowControlLoopsCollections {
      * @param y The second number.
      * @return "Hello World!" if x greater than y, otherwise return null.
      */
-    public static String helloWorld(Integer x, Integer y) {
+    //LOOK AT 
+     public static String helloWorld(Integer x, Integer y) {
+        // Trying the Safe Nav operator.  Why the error that y does not exist?
+        /*
+        if ( ( x?.y ) || ( x <= y ) ) {
+            return null;
+        } else {
+            return 'Hello World!';
+        } 
+        */
+        
+        // This passes but seems verbose... what I am missing from your comments last week on Safe Nav operator?
         if (x == null || y == null || (x <= y)) {
             return null;
         } else {
             return 'Hello World!';
         }
+        
     }
 
     /**
@@ -65,8 +77,25 @@ public with sharing class FlowControlLoopsCollections {
     public static Integer findMax(Integer num1, Integer num2) {
         // Initialize largestNum as null
         Integer largestNum = null;
+        /* Which is better: nested if or if else?  
+        if ( num1 == null || num2 == null ) {
+            return null;
+        } else {
+            if ( num1 < num2 ) {
+                return num2;
+            } else {
+                return num1;
+            }
+        }
+        */
 
-        return null; // Replace null with the variable you used to store the result
+        if ( num1 == null || num2 == null ) {
+            return null;
+        } else if ( num1 < num2 ) {
+            return num2;
+        } else {
+            return num1;
+        }
     }
 
 
@@ -79,7 +108,15 @@ public with sharing class FlowControlLoopsCollections {
      * @return A string indicating whether the number is "Positive", "Negative", or "Zero", or null if the number is null.
      */
     public static String checkNumber(Integer a) {
-        return null; // Replace null with the variable you used to store the result
+        if ( a == null ) {
+            return null;
+        } else if ( a < 0 ) {
+            return 'Negative';
+        } else if ( a > 0 ) {
+            return 'Positive';
+        } else {
+            return 'Zero';
+        }
     }
 
     /**
@@ -91,7 +128,13 @@ public with sharing class FlowControlLoopsCollections {
      * @return A string indicating whether the number is "Even" or "Odd", or null if the number is null.
      */
     public static String checkEvenOdd(Integer a) {
-        return null; // Replace null with the variable you used to store the result
+        if ( a == null ) {
+            return null;
+        } else if ( Math.Mod(a,2) == 0 ) {
+            return 'Even';
+        } else {
+            return 'Odd';
+        }
     }
 
     /**
