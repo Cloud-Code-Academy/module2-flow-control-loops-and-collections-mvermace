@@ -30,3 +30,6 @@ System.debug('Mikes = ' + mikes.toString());
 Map<String, Integer> mikemap = new Map<String,Integer>();
 mikemap = FlowControlLoopsCollections.addItemsToMap();
 System.debug('Map = ' + JSON.serializePretty(mikemap));
+
+List<String> highSalaryEmplopyees = FlowControlLoopsCollections.getHighPaidEmployees();
+System.debug('List = ' + JSON.serializePretty(highSalaryEmplopyees));

@@ -29,7 +29,7 @@ public with sharing class FlowControlLoopsCollections {
      * @return "Hello World!" if x greater than y, otherwise return null.
      */
     //LOOK AT 
-     public static String helloWorld(Integer x, Integer y) {
+    public static String helloWorld(Integer x, Integer y) {
         // Trying the Safe Nav operator.  Why the error that y does not exist?
         /*
         if ( ( x?.y ) || ( x <= y ) ) {
@@ -40,7 +40,7 @@ public with sharing class FlowControlLoopsCollections {
         */
         
         // This passes but seems verbose... what I am missing from your comments last week on Safe Nav operator?
-        if (x == null || y == null || (x <= y)) {
+        if ( x == null || y == null || (x <= y) ) {
             return null;
         } else {
             return 'Hello World!';
@@ -433,23 +433,38 @@ public with sharing class FlowControlLoopsCollections {
      * @return A list of employee names who have a salary more than 55000.
      */
     public static List<String> getHighPaidEmployees() {
-        // Initialize a Map
-        Map<String, Integer> employeeSalaries = new Map<String, Integer>();
+        //Initialize a List >55K salaried employees
+        List<String> employeeGT55KSalaries = new List<String>();
+        
+        // Wish we could access work already done by getSalary() Class.... Week 4?
+        Map<String,Integer> employeeMap = new Map<String,Integer>{
+            'John Doe' => 50000,
+            'Jane Smith' => 60000,
+            'Sam Brown' => 55000,
+            'Alice Johnson' => 65000
+        };
+        
+        // Create a Set<String>
+        Set<String> setOfEmployees = new Set<String>();
+        // Fill setOfEmployees with Keys from employeeMap
+        setOfEmployees = employeeMap.keySet();
+        System.debug('Set = ' + setOfEmployees);
 
-        // Add key-value pairs to the Map
-        // add John Doe => 50000
-        // add Jane Smith => 60000
-        // add Sam Brown => 55000
-        // add Alice Johnson => 65000
-
-        // Initialize a list to store the names of high paid employees
-
-        // Iterate over the Map using a for loop
-            // Check if the salary of the employee is more than 55000
-                // Add the employee to the list of high paid employees
-
-        // Return the list of high paid employees
-        return null; // Replace null with the variable you used to store the result
+        // Iterate over setOfEmployees with a String s
+        for ( String s : setOfEmployees ) {
+            System.debug('s = ' + s);
+            // Use s to get() the Value from employeeMap and check if >55K
+            if ( employeeMap.get(s) > 55000 ) {
+                employeeGT55KSalaries.add(s);
+            }
+        }
+        System.debug('List55K = ' + JSON.serializePretty(employeeGT55KSalaries));
+     
+        if ( employeeGT55KSalaries == null ) {
+            return null;
+        } else {
+            return employeeGT55KSalaries;
+        }
     }
 
 }
